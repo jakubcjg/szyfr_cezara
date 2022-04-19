@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string sc(string t, int key)
+{
+    int i = 0;
+    int lk = 'z' - 'a' + 1;
+    key = key % lk;
+    while(t[i]!='\0')
+    {
+        t[i] += key;
+        if((unsigned char)t[i]>'z') t[i] -= lk;
+       
+        if((unsigned char)t[i]<'a') t[i] += lk;
+       
+        i++;
+    }
+    return t;
+}
+int main()
+{
+    string t;
+    int k;
+    cout << "Podaj tekst do zaszyfrowania tylko male litery: ";
+    cin >> t;
+    cout << "Podaj klucz szyfru z przedzialu [-26..26]: ";
+    cin >> k;
+   t = sc(t, k);
+    cout << t;
+    return 0;
+}
